@@ -2,8 +2,11 @@ import pandas as pd
 from difflib import get_close_matches
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import os
+from django.conf import settings
 
-movies_list = pd.read_csv('/Users/laxmanmadipadige/Downloads/MovieRecommendationSystem/recommendation_system/imdb-movies-dataset.csv')
+dataset_path = os.path.join(settings.BASE_DIR, 'recommendation_system/imdb-movies-dataset.csv')
+movies_list = pd.read_csv(dataset_path)
 
 movies = movies_list.drop(['Metascore', 'Certificate'], axis=1)
 movies.dropna(inplace=True)
