@@ -21,7 +21,7 @@ movies = movies.reset_index(drop=True)
 
 
 def compute_similarity(col):
-    cv = TfidfVectorizer(ngram_range=(1, 3), analyzer='char', stop_words='english')
+    cv = TfidfVectorizer(ngram_range=(1, 3), analyzer='char')
     vectors = cv.fit_transform(movies[col]).toarray()
     sim = cosine_similarity(vectors)
     return sim
