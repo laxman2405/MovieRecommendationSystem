@@ -1,0 +1,84 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    height: 100vh;
+}
+
+/* Make the navbar more spacious */
+.background-img {
+    background-image: url("../images/background.jpeg");
+    background-size: cover;
+    background-position: center;
+}
+.navbar {
+    padding: 1rem 2rem;
+}
+
+.transparent-navbar {
+    background-color: black !important;
+    border: black; /* Remove any border if present */
+}
+
+/* Navbar link styles */
+.navbar-nav .nav-link {
+    font-size: 1.1rem;
+    margin-right: 1rem; /* Adds space between links */
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    color: white;
+}
+
+/* Hover effect: color change and thick underline */
+.navbar-nav .nav-link:hover {
+    color: white; /* Change to desired hover color */
+    border-bottom: 3px solid red; /* Thick underline */
+}
+
+.img {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 5rem;
+}
+
+.typing-container {
+            font-size: 3em;
+            font-family: open sans;
+            margin: 15px;
+        }
+
+        #text {
+            border-right: 2px solid black;
+            padding-right: 5px;
+            color: white;
+            animation: blink 0.7s steps(1) infinite;
+        }
+
+        /* Cursor blinking effect */
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+.underline {
+        display: inline-block;
+        position: relative;
+        text-align: center;
+        font-size: 24px;
+}
+
+.underline::after {
+    content: "";
+    display: block;
+    width: 5%;
+    height: 3px;
+    background-color: red;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px;
+}
+.text {
+    text-align: left;
+        padding: 20px;
+        margin: 0 auto;
+        max-width: 900px;
+}
