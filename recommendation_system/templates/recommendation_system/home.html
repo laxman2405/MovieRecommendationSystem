@@ -75,13 +75,19 @@
                     const s_hrs = Math.floor(searched.duration / 60);
                     const s_minutes = searched.duration % 60;
                     const s_time = `${s_hrs} hr ${s_minutes} min`;
-                    recomm.innerHTML += `<p style="color:white;">Searched for: <strong>"${searched.title}"</strong></p>`;
+                    const isFound = searched.notFound
+
+                    const searchedMessage = !isFound
+                    ? `Searched for: <strong>"${searched.title}"</strong>`
+                    : `Searched movie not found. Giving results for closest match: <strong>"${searched.title}"</strong>`;
+
+                    recomm.innerHTML += `<p style="color:white;">${searchedMessage}</p>`;
                     recomm.innerHTML += `
-                                            <div class="row" style="color:white;">
-                                                <div class="col-md-2 col-4">
-                                                    <img src="${searched.poster}" style="height:230px;display:block;margin:0 auto;"/>
+                                            <div class="row align-items-start" style="color:white;">
+                                                <div class="col-md-3 col-3 mb-2 mb-md-0">
+                                                    <img src="${searched.poster}" style="height:230px;display:block;margin:0 auto;" class="img-fluid"/>
                                                 </div>
-                                                <div class="col-md-10 col-8" style="padding-left:20px;">
+                                                <div class="col-md-9 col-7" style="padding-left:20px;">
                                                     <div class="row" style="color:white;">
                                                         <div class="col-md-8 col-12">
                                                             <p class="fs-5 fs-md-4 fw-bold" style="font-size:25px;">${searched.title} (${searched.rating}/10)</p>
@@ -108,7 +114,7 @@
                          recomm.innerHTML += `
                                                 <div class="row" style="margin-bottom:15px;">
                                                     ${i < recommendations.length ? `
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-3 col-xs-12 col-sm-4">
                                                         <div class="card h-100" style="cursor:pointer;" onclick="openModal(${i})">
                                                             <img src="${recommendations[i].poster}" class="card-img-top" style="height:200px;overflow:hidden;">
                                                             <div class="card-body" style="text-align:center;padding-top:10px;">
@@ -117,7 +123,7 @@
                                                         </div>
                                                     </div>` : ''}
                                                     ${i + 1 < recommendations.length ? `
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-3 col-xs-12 col-sm-4">
                                                         <div class="card h-100" style="cursor:pointer;" onclick="openModal(${i+1})">
                                                             <img src="${recommendations[i + 1].poster}" class="card-img-top" style="height:200px;overflow:hidden;">
                                                             <div class="card-body" style="text-align:center;padding-top:10px;">
@@ -126,7 +132,7 @@
                                                         </div>
                                                     </div>` : ''}
                                                     ${i + 2 < recommendations.length ? `
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-3 col-xs-12 col-sm-4">
                                                         <div class="card h-100" style="cursor:pointer;" onclick="openModal(${i+2})">
                                                             <img src="${recommendations[i + 2].poster}" class="card-img-top" style="height:200px;overflow:hidden;">
                                                             <div class="card-body" style="text-align:center;padding-top:10px;">
@@ -135,7 +141,7 @@
                                                         </div>
                                                     </div>` : ''}
                                                     ${i + 3 < recommendations.length ? `
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-3 col-xs-12 col-sm-4">
                                                         <div class="card h-100" style="cursor:pointer;" onclick="openModal(${i+3})">
                                                             <img src="${recommendations[i + 3].poster}" class="card-img-top" style="height:200px;overflow:hidden;">
                                                             <div class="card-body" style="text-align:center;padding-top:10px;">
@@ -385,7 +391,7 @@
                 </div>
                 <div id="collapseFour" class="collapse" data-bs-parent="#accordion">
                     <div class="card-body">
-                        Do not Worry! We will find the closest match for your search and provide recommendations for that.
+                        Do not Worry! We will find the closest match for your search and provide recommendations for that. If the closest match movie is not found, then return appropriate message.
                     </div>
                 </div>
             </div>

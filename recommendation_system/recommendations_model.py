@@ -12,10 +12,12 @@ with open(os.path.join(settings.BASE_DIR, 'recommendation_system/movies.pkl'), '
     movies = pickle.load(f)
 
 def recommend_movie(movie):
+    not_found = False
     if movie not in movies['Title'].values:
         matches = get_close_matches(movie, movies['Title'], n=1, cutoff=0.6)
         if matches:
             movie = matches[0]
+            not_found = True
         else:
             return {"error": f"No match found for '{movie}'"}
 
@@ -61,7 +63,8 @@ def recommend_movie(movie):
             "src": searched_rc,
             "srt": searched_rt,
             "searched_review": movies.loc[idx].Review,
-            "s_votes": movies.loc[idx].Votes
+            "s_votes": movies.loc[idx].Votes,
+            "notFound": not_found
         },
         "recommendations": recommendations
     }
