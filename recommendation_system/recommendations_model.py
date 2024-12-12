@@ -3,13 +3,33 @@ from difflib import get_close_matches
 import pickle
 import os
 from django.conf import settings
+import gdown
 
 # Load precomputed similarity matrices and movies data
-with open(os.path.join(settings.BASE_DIR, 'recommendation_system/sim_final.pkl'), 'rb') as f:
-    sim_final = pickle.load(f)
+if(os.path.exists(os.path.join(settings.BASE_DIR, 'recommendation_system/sim_final.pkl'))):
+    print('inside if')
+    with open(os.path.join(settings.BASE_DIR, 'recommendation_system/sim_final.pkl'), 'rb') as f:
+        sim_final = pickle.load(f)
+else:
+    sim_url = 'https://drive.google.com/file/d/1qrSzBRHtQegZgwtyMQMRghHMY2Mdnx_9/view?usp=drive_link'
+    sim_output = os.path.join(settings.BASE_DIR, 'recommendation_system/sim_final.pkl')
+    gdown.download(sim_url, sim_output, quiet=False, fuzzy=True)
+    with open(sim_output, 'rb') as f:
+        sim_final = pickle.load(f)
 
-with open(os.path.join(settings.BASE_DIR, 'recommendation_system/movies.pkl'), 'rb') as f:
-    movies = pickle.load(f)
+
+if(os.path.exists(os.path.join(settings.BASE_DIR, 'recommendation_system/movies.pkl'))):
+    print('inside if-movies')
+    with open(os.path.join(settings.BASE_DIR, 'recommendation_system/movies.pkl'), 'rb') as f:
+        movies = pickle.load(f)
+else:
+    movies_url = 'https://drive.google.com/file/d/10s5nyYRfXczh1ULqXDxRbrc55BN9NTXX/view?usp=drive_link'
+    movies_output = os.path.join(settings.BASE_DIR, 'recommendation_system/movies.pkl')
+    gdown.download(movies_url, movies_output, quiet=False, fuzzy=True)
+    with open(movies_output, 'rb') as f:
+        movies = pickle.load(f)
+
+
 
 def recommend_movie(movie):
     not_found = False

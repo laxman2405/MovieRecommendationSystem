@@ -109,7 +109,7 @@
                                             </div>
                                             <a onclick="openSearchedModal()" style="cursor:pointer;color:white;font-style:bold;"><u>Click here for Movie Review</u></a>
                                             <hr style="color:white;">`
-                    recomm.innerHTML += `<p style="color:white;">Recommendations for: <strong>"${searched.title}"</strong></p>`;
+                    recomm.innerHTML += `<p style="color:white;">Recommendations for: <strong>"${searched.title}". Click on each movie below for more details.</strong></p>`;
                     for(let i=0;i<recommendations.length;i+=4) {
                          recomm.innerHTML += `
                                                 <div class="row" style="margin-bottom:15px;">
@@ -333,7 +333,7 @@
                     movies similar to those a user has interacted with. This model is then evaluated based on the
                     recommendation accuracy and precision to ensure effective results.
                     <br><br>
-                    In addition, Usability testing will also be conducted
+                    In addition, Usability testing has been conducted
                     throughout the process to ensure a robust and scalable recommendation system.
                 </p>
             </div>
