@@ -3,7 +3,7 @@
 Steps to run the project in local environment
 1. Install python version 3.11.10
 2. Install Python Anaconda
-3. Clone the repository using the command - git clone
+3. Clone the repository using the command - git clone https://github.com/laxman2405/MovieRecommendationSystem.git
 4. Go into the MovieRecommendationSystem folder using the command - cd MovieRecommendationSystem
 5. Create a conda virtual environment
    
