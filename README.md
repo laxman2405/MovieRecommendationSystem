@@ -17,7 +17,7 @@ Steps to run the project in local environment
 10. Now, run the command 'pip install -r requirements.txt' to download all the required dependencies.
 11. Next, we can follow 2 options to run the code in local.
     
-    The first way is to train the model to generate the training data. For this, run the command 'python recommendation_system/training.py' command. This command generates two pkl files: sim_final.pkl and movies.pkl.
+    The first way is to train the model to generate the training data. For this, run the command 'python recommendation_system/training.py' command. This command generates two pkl files: sim_final.pkl and movies.pkl. If this step provides any issue while feature extraction, then please follow second way mentioned below.
     
     The second way is, If we don't want to traing the model and run the application in local, then run the command 'pip install gdown' in terminal. Here, it will try to download the training pkl files from shared google drive after the 12th step.
 12. Then, go to recommendation_model.py file and comment out lines 13-29, 7 and uncomment lines 32-53 and 6. Then run the command 'python manage.py runserver' on the terminal.
