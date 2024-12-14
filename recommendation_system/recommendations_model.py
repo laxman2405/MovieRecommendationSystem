@@ -7,8 +7,8 @@ from django.conf import settings
 import boto3
 
 # Lines 13-29 work only on Amazon EC2 server, as the training data is downloaded from Amazon S3 storage.
-# To proceed to run this in local, comment out the lines from 13-29 and line 7, and uncomment the lines 33-54 and line 6.
-# Lines 33-54 will load the training data from google drive.
+# To proceed to run this in local, comment out the lines from 13-29 and line 7, and uncomment the lines 32-53 and line 6.
+# Lines 32-53 will load the training data from google drive.
 # To train the model, run the training.py file and then proceed to run in local.
 bucket_name = "pkl-bucket-mrs"
 similarity_list = "sim_final.pkl"
